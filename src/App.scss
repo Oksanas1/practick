@@ -1,0 +1,13 @@
+// UTILITES
+@import './style/utilsStyles/reset';
+@import './style/utilsStyles/var';
+@import './style/utilsStyles/icons-list';
+
+// MAIN
+@import './style/mainStyle/mixins';
+
+// COMPONENT
+@import './components/FormMessage/formMessageStyled.module';
+@import './components/MessageItemMenu/messageItemMenu';
+@import './components/MessageList/messageListStyled';
+@import './components/NewMessage/newMessage'

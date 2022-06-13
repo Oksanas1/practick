@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'iconts';
+  src: url('../../fonts/icons/iconts.eot');
+  src: url('../../fonts/icons/iconts.eot?#iefix') format('embedded-opentype'),
+       url('../../fonts/icons/iconts.woff') format('woff'),
+       url('../../fonts/icons/iconts.ttf') format('truetype'),
+       url('../../fonts/icons/iconts.svg#iconts') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin icon-styles {
+  font-family: "iconts";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+  text-decoration: none;
+  text-transform: none;
+}
+
+%icon {
+  @include icon-styles;
+}
+
+@function icon-char($filename) {
+  $char: "";
+
+  @if $filename==arrow {
+    $char: "\0041";
+  }
+
+  @if $filename==delete {
+    $char: "\0042";
+  }
+
+  @if $filename==edit {
+    $char: "\0043";
+  }
+
+  @if $filename==forward {
+    $char: "\0044";
+  }
+
+  @return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+  &:#{$insert} {
+    @if $extend {
+      @extend %icon;
+    }
+
+    @else {
+      @include icon-styles;
+    }
+
+    content: icon-char($filename);
+  }
+}
+
+.icon-arrow {
+    @include icon(arrow);
+  }
+
+.icon-delete {
+  @include icon(delete);
+}
+
+.icon-edit {
+    @include icon(edit);
+  }
+
+.icon-forward {
+  @include icon(forward);
+}
+
+    
